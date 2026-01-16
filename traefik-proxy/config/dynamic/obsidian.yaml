@@ -3,12 +3,12 @@ http:
     it-tools:
       entryPoints:
       - https
-      rule: "Host(`obsidian.ottoinfo.local`)"
+      rule: "Host(`obsidian.ottoinfo.com`)"
       middlewares:
       - secured
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "ottoinfo.com"
           sans:
-          - "*.ottoinfo.local"
+          - "*.ottoinfo.com"
       service: obsidian-nerds-gummy-clusters@docker

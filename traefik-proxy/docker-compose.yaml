@@ -12,6 +12,7 @@ services:
     restart: unless-stopped
     env_file:
       - ./.env
+      - ./.do.env
     security_opt:
       - no-new-privileges:true # helps to increase security
     networks:
@@ -29,7 +30,7 @@ services:
       - "./certs/:/etc/certs:ro"
     labels:
       # Orb Stack
-      - dev.orbstack.domains=${SUB_DOMAIN}.ottoinfo.local
+      - dev.orbstack.domains=${SUB_DOMAIN}.ottoinfo.com
       - dev.orbstack.http-port=${DASHBOARD_PORT}
       #  Traefik
       - traefik.enable=true

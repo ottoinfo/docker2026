@@ -15,7 +15,7 @@ rm -rf .next
 
 # Starting Service
 logCallout "\n----------> Run Dev\n"
-yarn next dev --port "$NEXT_PORT"
+yarn next build --port "$NEXT_PORT"
 
 logInfo "######## Finished Otto+Info FE in Docker #########"
 

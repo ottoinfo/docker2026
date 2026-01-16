@@ -7,13 +7,13 @@ services:
       args:
         - IMAGE=${UI_IMAGE}
         - TAG=${UI_IMAGE_VERSION}
-        - YARN_VERSION=${UI_YARN_VERSION}
     container_name: ${UI_SERVICE_NAME}
     hostname: ${UI_SERVICE_NAME}
     restart: unless-stopped
     tty: true
     stdin_open: true
     working_dir: "/data"
+    platform: linux/amd64
     env_file:
       - nextjs.env
     volumes:
@@ -33,7 +33,7 @@ services:
         ipv4_address: ${UI_IP4} # Static IP
     labels:
       # Orb Stack
-      - dev.orbstack.domains=${UI_SERVICE_NAME}.ottoinfo.local
+      - dev.orbstack.domains=${UI_SERVICE_NAME}.ottoinfo.com
       - dev.orbstack.http-port=${UI_SERVICE_PORT}
       #  Traefik
       - traefik.enable=true

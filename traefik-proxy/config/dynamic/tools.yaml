@@ -3,12 +3,12 @@ http:
     it-tools:
       entryPoints:
       - https
-      rule: "Host(`it-tools.ottoinfo.local`)"
+      rule: "Host(`it-tools.ottoinfo.com`)"
       middlewares:
       - secured
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "ottoinfo.com"
           sans:
-          - "*.ottoinfo.local"
+          - "*.ottoinfo.com"
       service: it-tools-nerds-gummy-clusters@docker

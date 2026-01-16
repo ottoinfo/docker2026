@@ -3,12 +3,12 @@ http:
     api:
       entryPoints:
       - http
-      rule: "Host(`ottoinfo.local`)"
+      rule: "Host(`ottoinfo.com`)"
       observability:
         tracing: true
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "ottoinfo.com"
           sans:
-          - "*.ottoinfo.local"
+          - "*.ottoinfo.com"
       service: ui-nerds-gummy-clusters@docker
