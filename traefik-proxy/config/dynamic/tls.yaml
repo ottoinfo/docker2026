@@ -1,9 +1,6 @@
 tls:
-  certificates:
-    certFile: "/etc/certs/ottoinfo.local.crt"
-    keyFile: "/etc/certs/ottoinfo.local.key"
-  stores:
-    default:
-      defaultCertificate:
-      - certFile: "/etc/certs/ottoinfo.local.crt"
-        keyFile: "/etc/certs/ottoinfo.local.key"
+  certresolver: cloudflare
+  domains:
+  - main: "ottoinfo.com"
+    sans:
+    - "*.ottoinfo.com"

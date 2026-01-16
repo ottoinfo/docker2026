@@ -8,6 +8,7 @@ http:
       middlewares:
       - secured
       tls:
+        certresolver: cloudflare
         domains:
         - main: "ottoinfo.com"
           sans:
@@ -20,6 +21,19 @@ api:
 
 docker:
   network: traefik
+
+certificatesResolvers:
+  cloudflare:
+    acme:
+      email: "me@ottoinfo.com"
+      storage: /var/traefik/certs/cloudflare-acme.json
+      caServer: "https://acme-v02.api.letsencrypt.org/directory"
+      keyType: EC256
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+        - "1.1.1.1:53"
+        - "1.0.0.1:53"
 
 # tcp:
 #   routers:
@@ -47,10 +61,6 @@ entryPoints:
           permanent: true
   https:
     address: ":443"
-    http:
-      tls: {}
-serversTransport:
-  insecureSkipVerify: true
 
 # Logging - DEBUG, PANIC, FATAL, ERROR (default), WARN, INFO
 log:

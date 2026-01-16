@@ -9,6 +9,7 @@ http:
       observability:
         tracing: true
       tls:
+        certresolver: cloudflare
         domains:
         - main: "ottoinfo.com"
           sans:
