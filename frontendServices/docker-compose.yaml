@@ -13,7 +13,6 @@ services:
     tty: true
     stdin_open: true
     working_dir: "/data"
-    platform: linux/amd64
     env_file:
       - nextjs.env
     volumes:

@@ -2,7 +2,7 @@ ARG IMAGE=${UI_IMAGE}
 ARG TAG=${UI_IMAGE_VERSION}
 
 # Stage 1 - BaseBuild
-FROM --platform=linux/arm64 ${IMAGE}:${TAG} AS builder
+FROM ${IMAGE}:${TAG} AS builder
 
 WORKDIR /data
 
