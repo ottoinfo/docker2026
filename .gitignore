@@ -1,0 +1,14 @@
+# misc
+.DS_Store
+
+
+# Frontend Services | Copy of PACKAGES for DOCKER
+frontendServices/node_modules/*
+frontendServices/package-lock.json
+
+# Try Example - Don't Track New Files
+TryExample/*
+!TryExample/example.docker-compose.yaml
+!nginx.env
+!nginx.vars.env
+!README.md

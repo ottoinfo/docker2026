@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "dictionaries": [
+    "bash",
+    "css",
+    "docker",
+    "html",
+    "nginx",
+    "node",
+    "npm",
+    "typescript"
+  ],
+  "ignorePaths": [
+    ".dist",
+    ".gitignore",
+    ".next",
+    ".vscode",
+    "project-words.txt",
+    "cspell.*",
+    "node_modules",
+    "package.json"
+  ],
+  "caseSensitive": false,
+  "words": [
+    "abtests",
+    "apachectl",
+    "broadcast",
+    "caroot",
+    "clientside",
+    "configstore",
+    "dircolors",
+    "dryrun",
+    "envsubst",
+    "healthcheck",
+    "hubitat",
+    "localapi",
+    "logfile",
+    "maxsize",
+    "mkcert",
+    "nginx",
+    "nginxproxy",
+    "nopush",
+    "orbstack",
+    "otto",
+    "ottoinfo",
+    "qeue",
+    "redis",
+    "referer",
+    "TRAEFIK",
+    "tsconfigs",
+    "tsdist",
+    "tspc",
+    "turbopack",
+    "xlarge",
+    "xsmall"
+  ],
+  "languageSettings": [
+    {
+      "languageId": "markdown",
+      "caseSensitive": true
+    },
+    {
+      "languageId": "javascript",
+      "caseSensitive": false
+    }
+  ]
+}

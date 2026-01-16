@@ -1,0 +1,44 @@
+services:
+  ui:
+    build:
+      dockerfile: ${UI_DOCKERFILE}
+      context: ./
+      target: builder
+      args:
+        - IMAGE=${UI_IMAGE}
+        - TAG=${UI_IMAGE_VERSION}
+        - YARN_VERSION=${UI_YARN_VERSION}
+    container_name: ${UI_SERVICE_NAME}
+    hostname: ${UI_SERVICE_NAME}
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    working_dir: "/data"
+    env_file:
+      - nextjs.env
+    volumes:
+      - ${UI_LOCAL_REPO}:/data # Copy Over Haribo Repo
+      # OverWrite Packages and Specific Files | Do NOT touch HARIBO REPO
+      - ./node_modules:/data/node_modules
+      - ./scripts:/data/scripts
+      # - ./package-lock.json:/data/package-lock.json:rw
+      # - ./bun.lock:/data/.bun.lock:rw
+      - ./nextjs.env:/data/.env:ro
+      - ./scripts/.bashrc.txt:/root/.bashrc:ro # Create Custom BASHRC Aliases
+      # - .:/data:delegated # Any Files inside `frontendService` write over, but do NOT touch Original Files
+    ports:
+      - "${UI_SERVICE_FORWARD_PORT}:${UI_SERVICE_PORT}/tcp"
+    networks:
+      ottoinfo:
+        ipv4_address: ${UI_IP4} # Static IP
+    labels:
+      # Orb Stack
+      - dev.orbstack.domains=${UI_SERVICE_NAME}.ottoinfo.local
+      - dev.orbstack.http-port=${UI_SERVICE_PORT}
+      #  Traefik
+      - traefik.enable=true
+    # Start Command
+    command: /bin/bash -c /data/scripts/nodeStart.sh
+
+volumes:
+  ui_data:

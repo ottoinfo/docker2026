@@ -1,0 +1,34 @@
+# Usage
+#   Start:          docker compose up
+#   Stop:           docker compose down
+#   Destroy:        docker compose down -v
+
+include:
+  # APPS
+  - frontendServices/docker-compose.yaml
+  # - backendServices/docker-compose.yaml
+  # # NETWORK
+  # - dns/docker-compose.yaml # Reverse Proxy
+  - traefik-proxy/docker-compose.yaml # Reverse Proxy
+  # # ADDITIONAL
+  # - additionalServices/checkmk/docker-compose.yaml
+  # - additionalServices/dozzle/docker-compose.yaml
+  # - additionalServices/it-tools/docker-compose.yaml
+  # - additionalServices/portainer/docker-compose.yaml
+  # - additionalServices/obsidian/docker-compose.yaml
+
+# Create/Setup Networks
+networks:
+  # If no other networks are defined on the service, it will be in "default" network by default
+  traefik:
+    name: ${TRAEFIK_NETWORK_NAME}
+    driver: ${TRAEFIK_NETWORK_DRIVER}
+    ipam:
+      config:
+        - subnet: ${TRAEFIK_NETWORK_SUBNET}
+  ottoinfo:
+    name: ${DO_NETWORK_NAME}
+    driver: ${DO_NETWORK_DRIVER}
+    ipam:
+      config:
+        - subnet: ${DO_NETWORK_SUBNET}

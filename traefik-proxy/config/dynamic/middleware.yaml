@@ -1,0 +1,55 @@
+# Middleware
+http:
+  middlewares:
+    secured:
+      chain:
+        middlewares:
+        - https-only
+        - ssl-header
+        - error-pages
+
+    https-only:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+    ssl-header:
+      headers:
+        customrequestheaders:
+          X-Forwarded-Proto: "https"
+
+    # known-ips:
+    #   ipAllowList:
+    #     sourceRange:
+    #     - "10.195.1.0/24"
+    #     - "192.168.1.0/24"
+    #     - "127.0.0.1/32"
+
+    default-security-headers:
+      headers:
+        browserXssFilter: true
+        customBrowserXSSValue: 0 # X-XSS-Protection=1; mode=block
+        contentTypeNosniff: true # X-Content-Type-Options=nosniff
+        forceSTSHeader: true # Add the Strict-Transport-Security header even when the connection is HTTP
+        frameDeny: false # X-Frame-Options=deny
+        referrerPolicy: "strict-origin-when-cross-origin"
+        stsIncludeSubdomains: true # Add includeSubdomains to the Strict-Transport-Security header
+        stsPreload: true # Add preload flag appended to the Strict-Transport-Security header
+        stsSeconds: 3153600 # Set the max-age of the Strict-Transport-Security header (63072000 = 2 years)
+        contentSecurityPolicy: "default-src 'self'"
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
+    error-pages:
+      errors:
+        status: 400-599
+        service: traefik-error-pages@docker
+        query: /{status}.html
+
+    compressors:
+      compress: {}
+
+    ratelimitting:
+      ratelimit:
+        average: 2

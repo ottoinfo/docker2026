@@ -1,0 +1,21 @@
+http:
+  routers:
+    dozzle:
+      entryPoints:
+      - https
+      rule: "Host(`dozzle.ottoinfo.local`)"
+      middlewares:
+      - secured
+      tls:
+        domains:
+        - main: "ottoinfo.local"
+          sans:
+          - "*.ottoinfo.local"
+      service: dozzle-nerds-gummy-clusters@docker
+
+  services:
+    dozzleService:
+      loadBalancer:
+        servers:
+          url: http://dozzle:80
+          port: 80

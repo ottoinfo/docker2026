@@ -1,0 +1,24 @@
+services:
+  obsidian:
+    image: lscr.io/linuxserver/obsidian:latest
+    container_name: ${NAME}
+    hostname: ${NAME}
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    networks:
+      ottoinfo:
+        ipv4_address: ${IP4} # Static IP
+    ports:
+      - ${HTTP_PORT_FORWARD}:${HTTP_PORT}
+      - ${HTTPS_PORT_FORWARD}:${HTTPS_PORT}
+    labels:
+      # Orb Stack
+      - dev.orbstack.domains=${SUB_DOMAIN}.orb.local
+      #  Traefik
+      - traefik.enable=true
+    volumes:
+      - /path/to/config:/config
+    shm_size: "1gb"

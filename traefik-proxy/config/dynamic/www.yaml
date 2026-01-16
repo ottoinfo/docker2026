@@ -1,0 +1,14 @@
+http:
+  routers:
+    api:
+      entryPoints:
+      - http
+      rule: "Host(`ottoinfo.local`)"
+      observability:
+        tracing: true
+      tls:
+        domains:
+        - main: "ottoinfo.local"
+          sans:
+          - "*.ottoinfo.local"
+      service: ui-nerds-gummy-clusters@docker

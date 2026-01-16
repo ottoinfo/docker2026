@@ -1,0 +1,39 @@
+include:
+  # - addOns/mkcert/docker-compose.yaml
+  - addOns/error-pages/docker-compose.yaml
+  # - addOns/jaeger/docker-compose.yaml
+  - addOns/whoami/docker-compose.yaml
+
+services:
+  traefik:
+    image: traefik:latest # or traefik:v3.3 to pin a version
+    container_name: ${NAME}
+    hostname: ${NAME}
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    security_opt:
+      - no-new-privileges:true # helps to increase security
+    networks:
+      traefik:
+        ipv4_address: ${IP4} # Static IP
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+      - "${HTTPS_PORT_FORWARD}:${HTTPS_PORT}"
+      - "${DASHBOARD_PORT_FORWARD}:${DASHBOARD_PORT}"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
+      - ./config/dynamic/:/etc/traefik/dynamic/:ro
+      - "./certs/:/etc/certs:ro"
+    labels:
+      # Orb Stack
+      - dev.orbstack.domains=${SUB_DOMAIN}.ottoinfo.local
+      - dev.orbstack.http-port=${DASHBOARD_PORT}
+      #  Traefik
+      - traefik.enable=true
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}

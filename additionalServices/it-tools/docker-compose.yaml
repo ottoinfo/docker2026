@@ -1,0 +1,18 @@
+services:
+  it-tools:
+    image: "corentinth/it-tools:latest" # The Docker image to use.
+    container_name: ${NAME}
+    hostname: ${NAME}
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    networks:
+      ottoinfo:
+        ipv4_address: ${IP4} # Static IP
+    ports:
+      - "${HTTP_PORT_FORWARD}:${HTTP_PORT}/tcp"
+    labels:
+      # Orb Stack
+      - dev.orbstack.domains=${SUB_DOMAIN}.orb.local
+      #  Traefik
+      - traefik.enable=true

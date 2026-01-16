@@ -1,0 +1,11 @@
+tls:
+  certificates:
+  - certFile: "/etc/certs/local.crt"
+    keyFile: "/etc/certs/local.key"
+  # - certFile: "/etc/certs/ottoinfo_dev.crt"
+  #   keyFile: "/etc/certs/ottoinfo_dev.key"
+  stores:
+    default:
+      defaultCertificate:
+      - certFile: "/etc/certs/local.crt"
+        keyFile: "/etc/certs/local.key"

@@ -1,0 +1,16 @@
+http:
+  routers:
+    postgres:
+      entryPoints:
+      - https
+      rule: "Host(`postgres.ottoinfo.local`)"
+      middlewares:
+      - secured
+      observability:
+        tracing: true
+      tls:
+        domains:
+        - main: "ottoinfo.local"
+          sans:
+          - "*.ottoinfo.local"
+      service: db-nerds-gummy-clusters@docker
