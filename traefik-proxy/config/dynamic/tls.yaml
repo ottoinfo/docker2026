@@ -1,6 +1,9 @@
 tls:
-  certresolver: cloudflare
-  domains:
-  - main: "ottoinfo.com"
-    sans:
-    - "*.ottoinfo.com"
+  stores:
+    default:
+      defaultGeneratedCert:
+        certresolver: cloudflare
+        domains:
+        - main: "ottoinfo.com"
+          sans:
+          - "*.ottoinfo.com"
