@@ -1,11 +1,8 @@
 tls:
   certificates:
-  - certFile: "/etc/certs/local.crt"
-    keyFile: "/etc/certs/local.key"
-  # - certFile: "/etc/certs/ottoinfo_dev.crt"
-  #   keyFile: "/etc/certs/ottoinfo_dev.key"
-  stores:
-    default:
-      defaultCertificate:
-      - certFile: "/etc/certs/local.crt"
-        keyFile: "/etc/certs/local.key"
+    - certFile: "/var/traefik/certs/ottoinfo.crt"
+      keyFile: "/var/traefik/certs/ottoinfo.key"
+      stores:
+        - default
+    # Note that since no store is defined,
+    # the certificate below will be stored in the `default` store.

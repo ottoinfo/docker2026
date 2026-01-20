@@ -3,12 +3,13 @@ http:
     portainer:
       entryPoints:
       - https
-      rule: "Host(`portainer.ottoinfo.local`)"
+      rule: "Host(`portainer.ottoinfo.com`)"
       middlewares:
       - secured
       tls:
+        certresolver: cloudflare
         domains:
-        - main: "ottoinfo.local"
+        - main: "ottoinfo.com"
           sans:
-          - "*.ottoinfo.local"
+          - "*.ottoinfo.com"
       service: portainer-nerds-gummy-clusters@docker

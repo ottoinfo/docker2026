@@ -12,6 +12,7 @@ services:
     restart: unless-stopped
     env_file:
       - ./.env
+      - ./.do.env
     security_opt:
       - no-new-privileges:true # helps to increase security
     networks:
@@ -26,10 +27,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
       - ./config/dynamic/:/etc/traefik/dynamic/:ro
-      - "./certs/:/etc/certs:ro"
+      - ./certs/:/var/traefik/certs/:rw
+
     labels:
       # Orb Stack
-      - dev.orbstack.domains=${SUB_DOMAIN}.ottoinfo.local
+      - dev.orbstack.domains=${SUB_DOMAIN}.ottoinfo.com
       - dev.orbstack.http-port=${DASHBOARD_PORT}
       #  Traefik
       - traefik.enable=true

@@ -3,14 +3,15 @@ http:
     dozzle:
       entryPoints:
       - https
-      rule: "Host(`dozzle.ottoinfo.local`)"
+      rule: "Host(`dozzle.ottoinfo.com`)"
       middlewares:
       - secured
       tls:
+        certresolver: cloudflare
         domains:
-        - main: "ottoinfo.local"
+        - main: "ottoinfo.com"
           sans:
-          - "*.ottoinfo.local"
+          - "*.ottoinfo.com"
       service: dozzle-nerds-gummy-clusters@docker
 
   services:

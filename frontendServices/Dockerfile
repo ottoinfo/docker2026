@@ -1,12 +1,8 @@
 ARG IMAGE=${UI_IMAGE}
 ARG TAG=${UI_IMAGE_VERSION}
-ARG NPM_VERSION=${UI_NPM_VERSION}
 
 # Stage 1 - BaseBuild
 FROM ${IMAGE}:${TAG} AS builder
-
-# Optional: Explicitly upgrade npm to the latest stable version
-# RUN npm install -g npm@${NPM_VERSION}
 
 WORKDIR /data
 
