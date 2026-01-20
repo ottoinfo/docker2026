@@ -1,9 +1,8 @@
 tls:
-  stores:
-    default:
-      defaultGeneratedCert:
-        certresolver: cloudflare
-        domains:
-        - main: "ottoinfo.com"
-          sans:
-          - "*.ottoinfo.com"
+  certificates:
+    - certFile: "/var/traefik/certs/ottoinfo.crt"
+      keyFile: "/var/traefik/certs/ottoinfo.key"
+      stores:
+        - default
+    # Note that since no store is defined,
+    # the certificate below will be stored in the `default` store.
