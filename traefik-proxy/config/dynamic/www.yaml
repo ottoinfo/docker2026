@@ -3,14 +3,14 @@ http:
     api:
       entryPoints:
       - https
-      rule: "Host(`ottoinfo.local`)"
+      rule: "Host(`${SERVER_NAME}.${TOP_LEVEL_DOMAIN}`)"
       observability:
         tracing: true
       middlewares:
       - secured
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
           sans:
-          - "*.ottoinfo.local"
+          - "*.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
       service: ui-docker@docker

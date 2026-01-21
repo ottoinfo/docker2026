@@ -3,15 +3,15 @@ http:
   routers:
     traefik:
       entrypoints: https
-      rule: "Host(`proxy.ottoinfo.local`),Host(`dashboard.docker.localhost`)"
+      rule: "Host(`proxy.{SERVER_NAME}.${TOP_LEVEL_DOMAIN}`),Host(`dashboard.docker.localhost`)"
       service: "api@internal"
       middlewares:
       - secured
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "{SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
           sans:
-          - "*.ottoinfo.local"
+          - "*.{SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 
 # Global
 api:

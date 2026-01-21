@@ -12,7 +12,7 @@ http:
       priority: 10
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
           sans:
-          - "*.ottoinfo.local"
+          - "*.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
       service: error-docker@docker

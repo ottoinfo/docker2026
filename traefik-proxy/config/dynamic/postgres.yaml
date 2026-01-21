@@ -3,14 +3,14 @@
 #     postgres:
 #       entryPoints:
 #       - https
-#       rule: "Host(`postgres.ottoinfo.local`)"
+#       rule: "Host(`postgres.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}`)"
 #       middlewares:
 #       - secured
 #       observability:
 #         tracing: true
 #       tls:
 #         domains:
-#         - main: "ottoinfo.local"
+#         - main: "${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 #           sans:
-#           - "*.ottoinfo.local"
+#           - "*.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 #       service: db-docker@docker

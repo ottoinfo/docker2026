@@ -3,14 +3,14 @@ http:
     dozzle:
       entryPoints:
       - https
-      rule: "Host(`dozzle.ottoinfo.local`)"
+      rule: "Host(`dozzle.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}`)"
       middlewares:
       - secured
       tls:
         domains:
-        - main: "ottoinfo.local"
+        - main: "${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
           sans:
-          - "*.ottoinfo.local"
+          - "*.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
       service: dozzle-docker@docker
 
   services:

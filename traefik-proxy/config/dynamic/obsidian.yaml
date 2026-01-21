@@ -3,12 +3,12 @@
 #     it-tools:
 #       entryPoints:
 #       - https
-#       rule: "Host(`obsidian.ottoinfo.local`)"
+#       rule: "Host(`obsidian.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}`)"
 #       middlewares:
 #       - secured
 #       tls:
 #         domains:
-#         - main: "ottoinfo.local"
+#         - main: "${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 #           sans:
-#           - "*.ottoinfo.local"
+#           - "*.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 #       service: obsidian-docker@docker

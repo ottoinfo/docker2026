@@ -3,12 +3,12 @@
 #     portainer:
 #       entryPoints:
 #       - https
-#       rule: "Host(`portainer.ottoinfo.local`)"
+#       rule: "Host(`portainer.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}`)"
 #       middlewares:
 #       - secured
 #       tls:
 #         domains:
-#         - main: "ottoinfo.local"
+#         - main: "${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 #           sans:
-#           - "*.ottoinfo.local"
+#           - "*.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}"
 #       service: portainer-docker@docker
