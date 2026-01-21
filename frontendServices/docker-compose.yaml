@@ -16,13 +16,10 @@ services:
     env_file:
       - .env
     volumes:
-      - ${UI_LOCAL_REPO}:/data # Copy Over Haribo Repo
-      # OverWrite Packages and Specific Files | Do NOT touch HARIBO REPO
+      - ${UI_LOCAL_REPO}:/data # Copy Over Portfolio Repo
+      # OverWrite Packages and Specific Files
       - ./node_modules:/data/node_modules
       - ./scripts:/data/scripts
-      # - ./package-lock.json:/data/package-lock.json:rw
-      # - ./bun.lock:/data/.bun.lock:rw
-      - ./nextjs.env:/data/.env:ro
       - ./scripts/.bashrc.txt:/root/.bashrc:ro # Create Custom BASHRC Aliases
       # - .:/data:delegated # Any Files inside `frontendService` write over, but do NOT touch Original Files
     ports:

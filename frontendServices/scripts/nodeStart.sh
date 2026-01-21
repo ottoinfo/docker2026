@@ -14,13 +14,14 @@ logCallout "\n----------> Clean up OLD NextJS Build\n"
 rm -rf .next
 
 # Starting Service
-if [ "$NODE_ENV" = "development" ]; then
-  logCallout "\n----------> Run Development\n"
-  yarn next dev --port "$NEXT_PORT"
-else
+if [ "$NODE_ENV" = "production" ]; then
   logCallout "\n----------> Run Production\n"
   yarn next build
-  yarn next start --port "$NEXT_PORT"
+  yarn next start --port "$UI_SERVICE_PORT"
+
+else
+  logCallout "\n----------> Run Development\n"
+  yarn next dev --port "$UI_SERVICE_PORT"
 fi
 
 logInfo "######## Finished Otto+Info FE in Docker #########"
