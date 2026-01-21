@@ -44,7 +44,7 @@ http:
     error-pages:
       errors:
         status: 400-599
-        service: traefik-error-pages@docker
+        service: error-docker@docker
         query: /{status}.html
 
     compressors:

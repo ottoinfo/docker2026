@@ -1,14 +1,14 @@
-http:
-  routers:
-    portainer:
-      entryPoints:
-      - https
-      rule: "Host(`portainer.ottoinfo.local`)"
-      middlewares:
-      - secured
-      tls:
-        domains:
-        - main: "ottoinfo.local"
-          sans:
-          - "*.ottoinfo.local"
-      service: portainer-nerds-gummy-clusters@docker
+# http:
+#   routers:
+#     portainer:
+#       entryPoints:
+#       - https
+#       rule: "Host(`portainer.ottoinfo.local`)"
+#       middlewares:
+#       - secured
+#       tls:
+#         domains:
+#         - main: "ottoinfo.local"
+#           sans:
+#           - "*.ottoinfo.local"
+#       service: portainer-docker@docker

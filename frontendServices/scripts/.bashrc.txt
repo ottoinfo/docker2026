@@ -1,5 +1,5 @@
 #!/bin/bash
 
 alias reload='/root/.bashrc'
-alias l='ls -lah'
-alias la='ls -lAG'
+alias l='ls -lah --color=auto'
+alias la='ls -lAG --color=auto'

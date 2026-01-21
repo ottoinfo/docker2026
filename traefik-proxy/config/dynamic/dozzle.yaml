@@ -11,7 +11,7 @@ http:
         - main: "ottoinfo.local"
           sans:
           - "*.ottoinfo.local"
-      service: dozzle-nerds-gummy-clusters@docker
+      service: dozzle-docker@docker
 
   services:
     dozzleService:

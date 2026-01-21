@@ -5,14 +5,20 @@
 
 include:
   # APPS
-  - frontendServices/docker-compose.yaml
+  - path: frontendServices/docker-compose.yaml
+    env_file:
+      - frontendServices/.env
+      - .env
   # - backendServices/docker-compose.yaml
   # # NETWORK
   # - dns/docker-compose.yaml # Reverse Proxy
-  - traefik-proxy/docker-compose.yaml # Reverse Proxy
+  - path: traefik-proxy/docker-compose.yaml # Reverse Proxy
+    env_file:
+      - traefik-proxy/.env
+      - .env
   # # ADDITIONAL
   # - additionalServices/checkmk/docker-compose.yaml
-  # - additionalServices/dozzle/docker-compose.yaml
+  - additionalServices/dozzle/docker-compose.yaml
   # - additionalServices/it-tools/docker-compose.yaml
   # - additionalServices/portainer/docker-compose.yaml
   # - additionalServices/obsidian/docker-compose.yaml
@@ -26,9 +32,9 @@ networks:
     ipam:
       config:
         - subnet: ${TRAEFIK_NETWORK_SUBNET}
-  ottoinfo:
-    name: ${DO_NETWORK_NAME}
-    driver: ${DO_NETWORK_DRIVER}
+  services:
+    name: ${SERVICES_NETWORK_NAME}
+    driver: ${SERVICES_NETWORK_DRIVER}
     ipam:
       config:
-        - subnet: ${DO_NETWORK_SUBNET}
+        - subnet: ${SERVICES_NETWORK_SUBNET}

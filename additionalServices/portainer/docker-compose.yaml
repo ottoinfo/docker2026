@@ -7,7 +7,7 @@ services:
     environment:
       - TZ=${TZ}
     networks:
-      ottoinfo:
+      services:
         ipv4_address: ${IP4} # Static IP
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro

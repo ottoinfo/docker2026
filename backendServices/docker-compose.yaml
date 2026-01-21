@@ -22,7 +22,7 @@ services:
     user: ${APP_USER}
     restart: unless-stopped
     networks:
-      ottoinfo:
+      services:
         ipv4_address: ${MAIN_SERVICE_IP4} # Static IP
     ports:
       - "${MAIN_SERVICE_FORWARD_PORT}:${MAIN_SERVICE_PORT}"

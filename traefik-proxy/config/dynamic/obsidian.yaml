@@ -1,14 +1,14 @@
-http:
-  routers:
-    it-tools:
-      entryPoints:
-      - https
-      rule: "Host(`obsidian.ottoinfo.local`)"
-      middlewares:
-      - secured
-      tls:
-        domains:
-        - main: "ottoinfo.local"
-          sans:
-          - "*.ottoinfo.local"
-      service: obsidian-nerds-gummy-clusters@docker
+# http:
+#   routers:
+#     it-tools:
+#       entryPoints:
+#       - https
+#       rule: "Host(`obsidian.ottoinfo.local`)"
+#       middlewares:
+#       - secured
+#       tls:
+#         domains:
+#         - main: "ottoinfo.local"
+#           sans:
+#           - "*.ottoinfo.local"
+#       service: obsidian-docker@docker

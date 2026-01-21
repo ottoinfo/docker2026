@@ -16,5 +16,6 @@ services:
     labels:
       # Orb Stack
       - dev.orbstack.domains=${ERROR_SUB_DOMAIN}.orb.local
+      - dev.orbstack.http-port=${HTTP_PORT}
       # Traefik
       - traefik.enable=true

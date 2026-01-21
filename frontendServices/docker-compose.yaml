@@ -7,7 +7,6 @@ services:
       args:
         - IMAGE=${UI_IMAGE}
         - TAG=${UI_IMAGE_VERSION}
-        - YARN_VERSION=${UI_YARN_VERSION}
     container_name: ${UI_SERVICE_NAME}
     hostname: ${UI_SERVICE_NAME}
     restart: unless-stopped
@@ -15,7 +14,7 @@ services:
     stdin_open: true
     working_dir: "/data"
     env_file:
-      - nextjs.env
+      - .env
     volumes:
       - ${UI_LOCAL_REPO}:/data # Copy Over Haribo Repo
       # OverWrite Packages and Specific Files | Do NOT touch HARIBO REPO
@@ -29,11 +28,11 @@ services:
     ports:
       - "${UI_SERVICE_FORWARD_PORT}:${UI_SERVICE_PORT}/tcp"
     networks:
-      ottoinfo:
+      services:
         ipv4_address: ${UI_IP4} # Static IP
     labels:
       # Orb Stack
-      - dev.orbstack.domains=${UI_SERVICE_NAME}.ottoinfo.local
+      - dev.orbstack.domains=${UI_SERVICE_NAME}.${SERVER_NAME}.${TOP_LEVEL_DOMAIN}
       - dev.orbstack.http-port=${UI_SERVICE_PORT}
       #  Traefik
       - traefik.enable=true

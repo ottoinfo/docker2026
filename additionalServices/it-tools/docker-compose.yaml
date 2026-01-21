@@ -7,7 +7,7 @@ services:
     environment:
       - TZ=${TZ}
     networks:
-      ottoinfo:
+      services:
         ipv4_address: ${IP4} # Static IP
     ports:
       - "${HTTP_PORT_FORWARD}:${HTTP_PORT}/tcp"

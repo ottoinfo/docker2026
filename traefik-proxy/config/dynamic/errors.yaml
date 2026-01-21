@@ -3,14 +3,16 @@ http:
     api:
       entryPoints:
       - https
-      rule: "Host(`ottoinfo.local`)"
       observability:
         tracing: true
       middlewares:
-      - secured
+      - error-pages
+      # use as "fallback" for any NON-registered services (with priority below normal)
+      rule: HostRegexp(`\.+`)
+      priority: 10
       tls:
         domains:
         - main: "ottoinfo.local"
           sans:
           - "*.ottoinfo.local"
-      service: ui-docker@docker
+      service: error-docker@docker

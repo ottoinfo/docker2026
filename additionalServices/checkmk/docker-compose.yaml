@@ -18,7 +18,7 @@ services:
       - 5080:5000
       - ${HTTP_PORT_FORWARD}:${HTTP_PORT}
     networks:
-      ottoinfo:
+      services:
         ipv4_address: ${IP4} # Static IP
     labels:
       # Orb Stack

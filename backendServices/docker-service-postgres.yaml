@@ -10,7 +10,7 @@ services:
     - POSTGRES_USER=${POSTGRES_USER}
     - DEPLOY_ENV=local
     networks:
-      ottoinfo:
+      services:
         ipv4_address: ${POSTGRES_SERVICE_IP4} # Static IP
     ports:
     - "${POSTGRES_SERVICE_FORWARD_PORT}:${POSTGRES_SERVICE_PORT}"
